@@ -1,6 +1,12 @@
 README
 ======
 
+Random scripts I threw together to facilitate creating a file system
+hierarchy that was as random as possible. Something to start with when
+creating a scavenger hunt so I didn't have to manually create a bunch
+of dummy files and directories to hide the real content that the students
+will be searching for.
+
 - Requires a wordlist file
   
   - You can find one somewhere on the internet or, there may be one in

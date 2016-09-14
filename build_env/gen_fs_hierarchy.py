@@ -5,8 +5,8 @@ import os.path
 import sys
 
 MAXDEPTH = 8
-MAXOBJ = 20
-MAXDIR = 5
+MAXOBJ = 15
+MAXDIR = 8
 
 
 def usage():

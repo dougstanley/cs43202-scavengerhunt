@@ -27,6 +27,12 @@ help help
 help echo
 ```
 
+Also, remember, you can email me or even ask your fellow students for help!
+Just do your own work! There's nothing wrong with helping each other when
+you're commands aren't working as expected, so long as you aren't giving
+each other answers! Helping friends debug is actually a great way to learn!
+
+
 ### bash builtins
 
 There's plenty of stuff built right into bash. For example, we can output
@@ -154,6 +160,12 @@ that is holding the **tacocat** file, read the next clue by typing:
 cat tacocat
 ```
 
+OR
+
+```bash
+less tacocat
+```
+
 That clue will give you directions to find the next clue, which will lead
 to the next, so on and so forth. Make sure to follow every direction contained
 in the various clues. Also, every clue you find, copy the file containing it
@@ -167,3 +179,18 @@ cp tacocat ~/hunt
 The final clue will tell you how to properly submit your scavenger hunt.
 
 ***GOOD LUCK***
+
+
+### Notes and Helpful Hints
+
+* If at anypoint, you get lost, you can always `cd ~dmstanle/hunt` to get back
+  to the top level of the hunt directory.
+
+* Each clue you find, it will work best if you `cd` or `popd` into the
+  directory containing the clue file. That way you can use commands on the
+  clue file without having to type the full path to the file first.
+
+* Since you are copying each clue to your own hunt directory, remember, you
+  can always look there if you forget what clue you're on. You can simply:
+  `popd ~/hunt` to go to your hunt dir, review clues, and then `popd` to go
+  back to the directory you were in before.

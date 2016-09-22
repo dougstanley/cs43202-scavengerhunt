@@ -7,7 +7,7 @@
 #
 ######################################
 
-function print_usage {
+print_usage() {
     echo "Usage:"
     echo "$0 NUMBER RANDOMWORDS"
     echo "Where:"

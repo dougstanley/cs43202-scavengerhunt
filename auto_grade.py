@@ -75,7 +75,6 @@ SPECIAL_CASES = ('79eb022bb34e82b7e5bcbbd78d142957',
                  'cb515018cc256d2e5307016885e0e32b',
                  )
 
-
 class GradingError(Exception):
     pass
 
@@ -104,7 +103,7 @@ class Submission(object):
         all_files = set(ALL)
         all_good = True
 
-        if not self.__check_file_sets:
+        if not self.__check_file_sets():
             all_good = False
             print "Some expected files not found in submission!"
 
@@ -141,6 +140,8 @@ class Submission(object):
 
         if all_good:
             self.__score += 4
+        else:
+            print "Check of all needed files failed."
 
     def __check_user(self):
         reg = re.compile(r'^[a-zA-Z][a-zA-Z0-9]*?$')
@@ -186,7 +187,6 @@ class Submission(object):
     def __check_file_sets(self):
         all_files = set(ALL)
         theirs = set(self.__map.values())
-
         return all_files.issubset(theirs)
 
     def grade(self):
@@ -195,7 +195,7 @@ class Submission(object):
         self.__check_name()
         self.__check_all_files()
 
-        print "Score for %s: %d" % (self.__user, self.__score)
+        print "Score for %s: %d%%" % (self.__user, self.__score)
 
 if __name__ == '__main__':
 

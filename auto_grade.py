@@ -75,6 +75,7 @@ SPECIAL_CASES = ('79eb022bb34e82b7e5bcbbd78d142957',
                  'cb515018cc256d2e5307016885e0e32b',
                  )
 
+
 class GradingError(Exception):
     pass
 
@@ -145,8 +146,14 @@ class Submission(object):
 
     def __check_user(self):
         reg = re.compile(r'^[a-zA-Z][a-zA-Z0-9]*?$')
-        file_info = self.__tar.getmember('hunt/USER')
-        if file_info.size > 1 and file_info.isfile():
+        if 'hunt/USER' in self.__tar.getnames():
+            file_info = self.__tar.getmember('hunt/USER')
+        elif 'hunt/user' in self.__tar.getnames():
+            file_info = self.__tar.getmember('hunt/user')
+        else:
+            file_info = None
+
+        if file_info is not None and file_info.size > 1 and file_info.isfile():
             fp = self.__tar.extractfile(file_info)
             self.__user = fp.read().strip()
             fp.close()
@@ -160,8 +167,12 @@ class Submission(object):
 
     def __check_name(self):
         reg = re.compile(r'^[a-zA-Z, ]+?$')
-        file_info = self.__tar.getmember('hunt/MYNAME')
-        if file_info.size > 1 and file_info.isfile():
+        if 'hunt/MYNAME' in self.__tar.getnames():
+            file_info = self.__tar.getmember('hunt/MYNAME')
+        else:
+            file_info = None
+
+        if file_info is not None and file_info.size > 1 and file_info.isfile():
             fp = self.__tar.extractfile(file_info)
             self.__name = fp.read().strip()
             fp.close()
@@ -195,7 +206,9 @@ class Submission(object):
         self.__check_name()
         self.__check_all_files()
 
-        print "Score for %s: %d%%" % (self.__user, self.__score)
+        details = (self.__user, self.__score, self.__score*2)
+
+        print "Score for %s: %d%% - %d/200" % details
 
 if __name__ == '__main__':
 
